@@ -68,21 +68,31 @@ nav {
     background: linear-gradient(180deg, #1E3A8A 80%, transparent);
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 15px 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
     border-bottom: 3px solid #FBBF24;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     width: 100%;
+    max-width: 1200px;
 }
 
 h4 {
-    color:#2DD4BF
+    color: #2DD4BF;
+}
+
+.nav-links {
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: max-height 0.3s ease-in-out;
 }
 
 .nav-link {
     color: #FBBF24;
     text-decoration: none;
-    margin: 5px 14px;
+    margin: 5px 8px;
     font-weight: 600;
     font-size: 1.1em;
     padding: 4px 4px;
@@ -103,6 +113,33 @@ h4 {
     text-decoration: underline;
     text-decoration-color: #F3F4F6;
     text-decoration-thickness: 2px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    margin-left: auto;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #FBBF24;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* Content Section Base Styles */
@@ -518,8 +555,23 @@ footer {
         font-size: 0.9em;
         padding: 12px;
     }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .nav-links.active {
+        display: flex;
+        max-height: 500px;
+    }
     .nav-link {
+        margin: 10px 0;
         font-size: 1em;
+    }
+    .hamburger {
+        display: flex;
     }
 }
 
